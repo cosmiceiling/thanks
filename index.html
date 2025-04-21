@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Kakak</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      color: #00796b;
+    }
+
+    p {
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    #musicControl {
+      background-color: #e53935;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 1rem;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 2rem;
+      background-color: #00796b;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatUp 2s ease-out forwards;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button id="musicControl" onclick="toggleMusic()">Putar Musik</button>
+    <audio id="bgMusic">
+      <source src="terimakasih.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung pemutar audio.
+    </audio>
+
+    <h1>Untuk Kakak</h1>
+    <p>
+      Kak,<br><br>
+      Terima kasih sudah datang dengan kata,<br>
+      meski sederhana, tapi terasa hangat di dada.<br><br>
+
+      Namanya manusia,<br>
+      kadang salah langkah, kadang tak sengaja.<br>
+      Tapi niat baikmu sampai,<br>
+      dan aku menerimanya dengan hati yang damai.<br><br>
+
+      Tak perlu banyak janji,<br>
+      cukup saling mengerti dan menjaga lagi.<br>
+      Karena bagiku, kakak tetap istimewa,<br>
+      meski sempat ada luka, kasihnya tak pernah hilang begitu saja.<br><br>
+
+      Kita lanjut, ya?<br>
+      Dengan senyum, tawa, dan cerita yang lebih indah setelahnya.
+    </p>
+
+    <div class="footer">— Dari aku, yang tetap sayang Kakak 💛</div>
+
+    <button onclick="showLove(this)">
+      Kita masih jadi adek kaka kan? Klik jika iya
+    </button>
+  </div>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicControl");
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "Pause Musik";
+      } else {
+        music.pause();
+        musicBtn.textContent = "Putar Musik";
+      }
+    }
+
+    function showLove(btn) {
+      alert('makasiii yaaa masih mau jadi kaka mwehehe💙');
+
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '💙';
+
+      const rect = btn.getBoundingClientRect();
+      heart.style.left = (rect.left + rect.width / 2 - 10) + 'px';
+      heart.style.top = (rect.top - 10 + window.scrollY) + 'px';
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
